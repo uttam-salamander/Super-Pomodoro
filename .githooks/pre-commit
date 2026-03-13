@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${SKIP_GIT_HOOKS:-0}" == "1" ]]; then
+  echo "[pre-commit] Skipping hooks because SKIP_GIT_HOOKS=1."
+  exit 0
+fi
+
+echo "[pre-commit] Running fast checks..."
+./scripts/ci/run_checks.sh --fast

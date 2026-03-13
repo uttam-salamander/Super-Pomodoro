@@ -281,7 +281,7 @@ This avoids most multi-process lock contention and keeps migrations, integrity c
 
 ## Domain Blocking Architecture
 
-### Design Goal
+### Blocking Design Goal
 
 Block domains across browsers and normal desktop apps by enforcing rules below the browser layer.
 
@@ -373,7 +373,7 @@ Trade-offs:
 
 ## Domain Monitoring Architecture
 
-### Design Goal
+### Monitoring Design Goal
 
 Capture domain access events system-wide and compute useful, honest analytics without claiming impossible precision.
 

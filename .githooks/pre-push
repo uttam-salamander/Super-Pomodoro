@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${SKIP_GIT_HOOKS:-0}" == "1" ]]; then
+  echo "[pre-push] Skipping hooks because SKIP_GIT_HOOKS=1."
+  exit 0
+fi
+
+echo "[pre-push] Running full checks..."
+./scripts/ci/run_checks.sh --full

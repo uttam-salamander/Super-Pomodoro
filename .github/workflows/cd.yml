@@ -1,0 +1,59 @@
+name: CD
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    name: Release Preflight
+    runs-on: ubuntu-latest
+    outputs:
+      has_tauri: ${{ steps.detect.outputs.has_tauri }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect project scaffold
+        id: detect
+        shell: bash
+        run: |
+          if [[ -f "src-tauri/tauri.conf.json" && -f "src-tauri/Cargo.toml" ]]; then
+            echo "has_tauri=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_tauri=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  release-placeholder:
+    name: Release Pipeline Placeholder
+    runs-on: ubuntu-latest
+    needs:
+      - preflight
+    if: needs.preflight.outputs.has_tauri == 'false'
+    steps:
+      - name: Explain next step
+        run: |
+          echo "CD scaffold is ready."
+          echo "Tauri source is not present yet, so the release build is skipped."
+          echo "Once app scaffolding lands, replace this placeholder with signed multi-platform release jobs."
+
+  tauri-build-smoke:
+    name: Tauri Build Smoke
+    runs-on: ubuntu-latest
+    needs:
+      - preflight
+    if: needs.preflight.outputs.has_tauri == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Smoke compile Rust backend
+        run: cargo check --manifest-path src-tauri/Cargo.toml --workspace --all-features

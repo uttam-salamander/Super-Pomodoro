@@ -10,6 +10,7 @@ The repository currently starts with documentation so the project can move into 
 - [Product Requirements Document](./docs/PRD.md)
 - [Technical Architecture](./docs/ARCHITECTURE.md)
 - [Database Schema](./docs/DATABASE_SCHEMA.md)
+- [Implementation Plan](./docs/IMPLEMENTATION_PLAN.md)
 - [System Diagrams](./docs/DIAGRAMS.md)
 - [Coding Standards](./docs/CODING_STANDARDS.md)
 
@@ -18,3 +19,17 @@ The repository currently starts with documentation so the project can move into 
 - Git repository initialized locally
 - Documentation foundation created
 - Implementation scaffolding not started yet
+
+## Local Setup
+
+Install local hooks:
+
+```bash
+./scripts/setup-git-hooks.sh
+```
+
+Run repository checks manually:
+
+```bash
+./scripts/ci/run_checks.sh --full
+```

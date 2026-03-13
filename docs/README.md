@@ -7,6 +7,7 @@ This folder contains the planning and engineering documents for Super Pomodoro.
 - [Product Requirements Document](./PRD.md)
 - [Technical Architecture](./ARCHITECTURE.md)
 - [Database Schema](./DATABASE_SCHEMA.md)
+- [Implementation Plan](./IMPLEMENTATION_PLAN.md)
 - [System Diagrams](./DIAGRAMS.md)
 - [Coding Standards](./CODING_STANDARDS.md)
 
@@ -15,8 +16,9 @@ This folder contains the planning and engineering documents for Super Pomodoro.
 1. Read the PRD to understand scope, user value, and release boundaries.
 2. Read the architecture document to understand system structure and technical decisions.
 3. Read the database schema to understand durable state, retention, and recovery semantics.
-4. Read the diagrams to understand runtime boundaries and major flows.
-5. Read the coding standards before starting implementation.
+4. Read the implementation plan to understand sequencing and delivery phases.
+5. Read the diagrams to understand runtime boundaries and major flows.
+6. Read the coding standards before starting implementation.
 
 ## Current Focus
 

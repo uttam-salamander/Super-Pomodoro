@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+
+# Node and frontend builds
+node_modules/
+dist/
+.svelte-kit/
+
+# Rust and Tauri builds
+target/
+src-tauri/target/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
